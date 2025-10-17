@@ -18,9 +18,11 @@
 /versioned/
 archive.json
 cddl/examples/1-cwt.cbor
+cddl/examples/1-cwt.pretty
 cddl/examples/1.cbor
 cddl/examples/1.pretty
 cddl/epoch-marker-autogen.cddl
+cddl/cwt-em-autogen.cddl
 draft-ietf-rats-epoch-markers.xml
 Gemfile.lock
 package-lock.json
