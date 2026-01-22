@@ -509,13 +509,21 @@ The encoded data item in CBOR pretty-printed form (hex with comments) is shown i
 {: #fig-ex-1-pretty artwork-align="center"
    title="CBOR Epoch Marker based on `etime` (pretty hex)"}
 
-The example in {{fig-ex-2}} shows a CWT-signed Epoch Marker with `epoch-tick` as the Epoch Marker type.
+The example in {{fig-ex-2}} shows an Epoch Marker with an `etime` as the Epoch Marker type carried within a CWT.
 
 ~~~~ cbor-diag
 {::include-fold cddl/examples/1-cwt.diag}
 ~~~~
 {: #fig-ex-2 artwork-align="center"
-   title="CWT Epoch Marker based on `epoch-tick` (EDN)"}
+   title="CBOR Epoch Marker based on `etime` carried within a CWT (EDN)"}
+
+The encoded data item in CBOR pretty-printed form (hex with comments) is shown in {{fig-ex-2-pretty}}.
+
+~~~~ cbor-pretty
+{::include-fold cddl/examples/1-cwt.pretty}
+~~~~
+{: #fig-ex-2-pretty artwork-align="center"
+   title="CBOR Epoch Marker based on `etime` carried within a CWT (pretty hex)"}
 
 ## RFC 3161 TSTInfo {#classic-tstinfo}
 

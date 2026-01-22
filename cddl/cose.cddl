@@ -1,0 +1,23 @@
+cose.Headers = (
+  protected : cose.empty_or_serialized_map,
+  unprotected : cose.header_map
+)
+
+cose.header_map = {
+  cose.Generic_Headers,
+  * cose.label => cose.values
+}
+
+cose.empty_or_serialized_map = bstr .cbor cose.header_map / bstr .size 0
+
+cose.Generic_Headers = (
+  ? 1 => int / tstr,  ; algorithm identifier
+  ? 2 => [+cose.label],    ; criticality
+  ? 3 => tstr / int,  ; content type
+  ? 4 => bstr,        ; key identifier
+  ? ( 5 => bstr //    ; IV
+  6 => bstr )     ; Partial IV
+)
+
+cose.label = int / tstr
+cose.values = any

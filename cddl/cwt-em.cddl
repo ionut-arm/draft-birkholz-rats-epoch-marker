@@ -1,0 +1,10 @@
+signed-epoch-marker = #6.18([
+  cose.Headers
+  payload: bytes .cbor cwt_em
+  signature: bytes
+])
+
+cwt_em = {
+  &(em: 2000) => epoch-marker
+  * any => any
+}

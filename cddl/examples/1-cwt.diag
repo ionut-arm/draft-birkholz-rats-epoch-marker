@@ -4,11 +4,16 @@
   } >>,
   / unprotected / {},
   / payload / << {
-    / iss / 1 : "ACME epoch bell", 
+    / epoch marker / 2000: / etime / 1001({
+      1: 851042397,
+      -10: "America/Los_Angeles",
+      -11: { "u-ca": "hebrew" }
+    }),
+    / eat_nonce /  10: h'c53a8c924f5a27877951ace250709aa64a45311840ca1c55da09af026a7a9c1c',
+    / iss / 1 : "ACME epoch bell",
     / aud / 3 : "ACME protocol clients",
-    / epoch marker / 2000: 26982(h'482e829ad29ac6ea6eda2d47d1d93a002bf41d9d88710ba972c36e59038f78b3')
     / nbf / 5 : 1757929800,
     / exp / 4 : 1757929860
   } >>,
-  / signature / h'face5190'
+  / signature / h'737461747574617279'
 ])
