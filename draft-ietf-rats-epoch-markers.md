@@ -378,7 +378,7 @@ strictly-monotonic-counter:
 
 #### Usage
 
-Deployments SHOULD follow the guidance in {{sec-state-seq-mgmt}} in establishing an acceptance policy for receivers.
+Deployments SHOULD follow the guidance in {{sec-state-seq-mgmt}} in establishing an Epoch Marker acceptance policy for receivers.
 To prove freshness, receivers SHOULD track the highest accepted counter and ensure it fulfills the acceptance policy.
 
 ## Time Requirements {#sec-time-reqs}
@@ -413,10 +413,8 @@ Conversely, applying the first signature to an Epoch Marker always makes the iss
 In distributed systems that rely on Epoch Markers for conveyance of freshness, the Epoch Bell plays a significant role in the assumed trust model.
 Freshness decisions derived from Epoch Markers depend on the Epoch Bell’s key(s) and correct behavior.
 If the Epoch Bell key is compromised, or the Bell is malicious/misconfigured, an attacker can emit valid-looking “fresh” Epoch Markers.
-Deployments should protect Bell signing keys (secure storage, rotation, revocation) and scope acceptance to the intended trust domain (e.g., expected issuer/trust anchor).
-Similarly, the Bell's clock must be securely sourced and managed, to prevent attacks that skew the Bell's perception of time.
-
-The following subsections discuss threats and security issues that may affect systems using Epoch Markers.
+Deployments generally need to protect Bell signing keys (secure storage, rotation, revocation) and scope acceptance to the intended trust domain (e.g., expected issuer/trust anchor).
+Similarly, the Bell's clock needs to be securely sourced and managed, to prevent attacks that skew the Bell's perception of time.
 
 ## Epoch Signalling Issues
 
@@ -425,8 +423,8 @@ A network adversary can replay validly signed Epoch Markers or delay distributio
 
 The epoch (acceptable window) duration is an operational security parameter: if too long, an Attester can create “good” Evidence in a good state and release it later while the epoch is still acceptable (notably for epoch-tick, epoch-tick-list, and strictly-monotonic-counter); if too short, distant Attesters may be rejected as stale due to latency.
 Epoch Markers are also designed to be reusable by multiple consumers, unlike nonces.
-Where per-session uniqueness is required, protocols should bind Epoch Markers to an explicit nonce (e.g., see {{sec-epoch-markers}}).
-Finally, deployments should pin which Epoch Marker types are acceptable for a given trust domain to avoid downgrade.
+Where per-session uniqueness is required, protocols typically need to bind Epoch Markers to an explicit nonce (e.g., see {{sec-epoch-markers}}).
+Finally, deployments are normally required to pin which Epoch Marker types are acceptable for a given trust domain to avoid downgrade.
 
 # IANA Considerations {#sec-iana-cons}
 
