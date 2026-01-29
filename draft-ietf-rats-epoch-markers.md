@@ -355,6 +355,11 @@ Asserting freshness of a conceptual message including an Epoch Tick from the epo
 
 The emitter MUST follow the requirements in {{sec-nonce-reqs}}.
 
+#### Usage
+
+Proving freshness requires receiver-side state to identify the “next unused” tick.
+Deployments SHOULD define how missing/out-of-order ticks are handled and how resynchronization occurs, as per {{sec-state-seq-mgmt}}.
+
 ### Strictly Monotonically Increasing Counter {#sec-strictly-monotonic}
 
 A strictly monotonically increasing counter.
@@ -371,6 +376,11 @@ strictly-monotonic-counter:
 
 : An unsigned integer used by RATS roles in a trust domain as extra data in the production of conceptual messages as specified by the RATS architecture {{-rats-arch}} to associate them with a certain epoch. Each new strictly-monotonic-counter value must be higher than the last one.
 
+#### Usage
+
+Deployments SHOULD follow the guidance in {{sec-state-seq-mgmt}} in establishing an acceptance policy for receivers.
+To prove freshness, receivers SHOULD track the highest accepted counter and ensure it fulfills the acceptance policy.
+
 ## Time Requirements {#sec-time-reqs}
 
 Time MUST be sourced from a trusted clock (see {{Section 10.1 of -rats-arch}}).
@@ -383,6 +393,15 @@ The generated value MUST be generated via a cryptographically secure random numb
 
 A maximum nonce size of 512 bits is set to limit the memory requirements.
 All receivers MUST be able to accommodate the maximum size.
+
+## State and Sequencing Management {#sec-state-seq-mgmt}
+
+Data structures containing Epoch Markers could be reordered in-flight even without malicious intent, leading to perceived sequencing issues.
+Some Epoch Marker types thus require receiver state to detect replay/rollback or establish sequencing.
+Deployments SHOULD define an explicit acceptance policy (e.g., bounded acceptance window) that accounts for reordering of markers.
+
+There is a trade-off between keeping a single “global” epoch view versus per-Attester state at the Verifier: global-only policies can exacerbate latency-induced false replay rejections, while per-Attester tracking can be costly.
+Deployments SHOULD document whether they use global epoch tracking or per-Attester state and, if necessary, the associated window.
 
 # Signature Requirements {#sec-signature-reqs}
 
@@ -403,19 +422,11 @@ The following subsections discuss threats and security issues that may affect sy
 
 {{Section 12.3 of -rats-arch}} provides a good introduction to attacks on conveyance of Epoch Markers.
 A network adversary can replay validly signed Epoch Markers or delay distribution, and differential latency can lead to different parties having different views of the “current” epoch.
-Deployments should define an explicit acceptance policy (e.g., bounded acceptance window) that accounts for skew.
 
 The epoch (acceptable window) duration is an operational security parameter: if too long, an Attester can create “good” Evidence in a good state and release it later while the epoch is still acceptable (notably for epoch-tick, epoch-tick-list, and strictly-monotonic-counter); if too short, distant Attesters may be rejected as stale due to latency.
 Epoch Markers are also designed to be reusable by multiple consumers, unlike nonces.
 Where per-session uniqueness is required, protocols should bind Epoch Markers to an explicit nonce (e.g., see {{sec-epoch-markers}}).
 Finally, deployments should pin which Epoch Marker types are acceptable for a given trust domain to avoid downgrade.
-
-## State Management and Sequencing
-
-Some Epoch Marker types require receiver state to detect replay/rollback or establish sequencing.
-For epoch-tick-list, freshness requires receiver-side state to identify the “next unused” tick; deployments should define how missing/out-of-order ticks are handled and how resynchronization occurs.
-For strictly-monotonic-counter, receivers must track the highest accepted counter to detect rollback.
-Deployments should document whether they use global epoch tracking or per-Attester state and, if necessary, the associated window.
 
 # IANA Considerations {#sec-iana-cons}
 
