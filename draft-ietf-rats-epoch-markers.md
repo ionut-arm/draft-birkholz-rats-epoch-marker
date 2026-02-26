@@ -451,7 +451,7 @@ Epoch duration should cover worst-case delivery plus clock skew of the Bell, and
 
 * *Large fleets sharing a Bell*: When many Attesters reuse the same Epoch Marker, per-Attester state at the Verifier may be impractical.
 One approach is to accept a global highest-seen epoch (with a bounded replay window) while requiring each Evidence record to bind the Epoch Marker to the Attester identity and, when feasible, a Verifier-provided nonce.
-This limits cross-attester replay of a single marker while enabling stateless caching or broadcast distribution of Epoch Markers at scale.
+This limits cross-attester replay of a single Epoch Marker while keeping the Bell stateless, which allows Epoch Markers to be cached and enables their broadcast distribution at scale.
 
 # IANA Considerations {#sec-iana-cons}
 
