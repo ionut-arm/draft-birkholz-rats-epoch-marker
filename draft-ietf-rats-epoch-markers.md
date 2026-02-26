@@ -21,7 +21,7 @@ author:
 - name: Henk Birkholz
   org: Fraunhofer SIT
   abbrev: Fraunhofer SIT
-  email: henk.birkholz@sit.fraunhofer.de
+  email: henk.birkholz@ietf.contact
   street: Rheinstrasse 75
   code: '64295'
   city: Darmstadt
@@ -29,10 +29,14 @@ author:
 - name: Thomas Fossati
   organization: Linaro
   email: Thomas.Fossati@linaro.org
-  country: CH
+  country: Switzerland
 - name: Wei Pan
   org: Huawei Technologies
   email: william.panwei@huawei.com
+- name: Ionuț Mihalcea
+  org: Arm
+  email: ionut.mihalcea@arm.com
+  country: United Kingdom
 - name: Carsten Bormann
   org: Universität Bremen TZI
   street: Bibliothekstr. 1
