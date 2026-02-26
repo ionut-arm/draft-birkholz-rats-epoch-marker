@@ -132,8 +132,14 @@ However, CWTs are not the only containers in which Epoch Markers can be embedded
 Epoch Markers can be included in any type of message that allows for the embedding of opaque bytes or CBOR data items.
 Examples include the Collection CMW in {{-csr-attestation}}, Evidence formats such as {{TCG-CoEvidence}} or {{-rats-eat}}, Attestation Results formats such as {{-rats-ar4si}}, or the CWT Claims Header Parameter of {{-scitt-receipts}}.
 
-Epoch Markers can be used in: other data formats as embeddings; protocols as information elements; systems integrating the previously mentioned protocols or data formats; deployments of such systems.
-Any of these can be considered a "user" of Epoch Markers, and will be referenced as using Epoch Markers throughout the document.
+Epoch markers can be used in the following ways:
+
+- as embeddings in other data formats
+- as information elements in protocols
+- in systems that integrate the aforementioned protocols or data formats
+- in the deployment of such systems
+
+All of these can be considered "users" of Epoch Markers and will be referred to as entities "using Epoch Markers” throughout the document.
 
 ## Terminology
 
