@@ -4,16 +4,16 @@
 
 This is the working area for the IETF [RATS Working Group](https://datatracker.ietf.org/group/rats/documents/) Internet-Draft, "Epoch Markers".
 
-* [Editor's Copy](https://ietf-rats.github.io/draft-birkholz-rats-epoch-marker/#go.draft-ietf-rats-epoch-markers.html)
+* [Editor's Copy](https://ietf-rats-wg.github.io/draft-birkholz-rats-epoch-marker/#go.draft-ietf-rats-epoch-markers.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-rats-epoch-markers)
 * [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-rats-epoch-markers)
-* [Compare Editor's Copy to Working Group Draft](https://ietf-rats.github.io/draft-birkholz-rats-epoch-marker/#go.draft-ietf-rats-epoch-markers.diff)
+* [Compare Editor's Copy to Working Group Draft](https://ietf-rats-wg.github.io/draft-birkholz-rats-epoch-marker/#go.draft-ietf-rats-epoch-markers.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/ietf-rats/draft-birkholz-rats-epoch-marker/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/ietf-rats-wg/draft-birkholz-rats-epoch-marker/blob/main/CONTRIBUTING.md).
 
 The contributing file also has tips on how to make contributions, if you
 don't already know how to do that.
