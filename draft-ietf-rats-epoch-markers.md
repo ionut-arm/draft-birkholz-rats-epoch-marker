@@ -180,10 +180,19 @@ Using an Epoch Marker requires the challenger to acquire an Epoch Marker beforeh
 
 # Epoch Marker Structure {#sec-epoch-markers}
 
-Epoch Markers are tagged CBOR data items.
-As a default, Epoch Markers are transported via the `em` Claim in CWTs.
-In cases of challenge-response interactions that employ a nonce to show recentness, the `em` Claim can be paired with a `Nonce` Claim to bind the nonce with the Epoch Marker as a response message in an ad-hoc request.
-This in fact means that it is possible to request an Epoch Marker via a challenge-response interaction using a nonce to then use the received CWT or the Epoch Marker included as a different nonce in a separate RATS reference interaction model.
+This section specifies Epoch Marker types using {{CDDL}} and illustrates their usage and relationship with other IETF work (e.g, {{TSA}}) where applicable.
+In general, Epoch Markers are intended to be conveyed securely, e.g., by being conveyed via a signed data structure, such as a CBOR Web Token (CWT), or by being conveyed via a secure channel.
+The specification of such "outer" structures and protocols and the means how to secure them is out-of-scope of this document.
+This documents defines the different types of Epoch Markers {{sec-iana-cbor-tags}}.
+For example, an Epoch Marker can be used to construct a CBOR-based Trusted Time Stamp Token, similar in function to a {{TSA}} TimeStampToken, using CWT and the `em` Claim defined in this document (see {{fig-ex-2}} for an illustration).
+The value(s) an Epoch Marker represents are intended to demonstrate freshness in messages and protocols of applications, but can also serve other purposes where trusted timestamps or time intervals are required.
+As such, taken as an opaque value it is possible to use  Epoch Markers as value of a nonce field in existing data structure or protocols that already support extra-data fields, such as a nonce field.
+The similarity between nonce usage and Epoch Marker usage that can occur sometimes can also lead to applications where both are used in the same interaction in different places to serve distinct purposes.
+A representative example for such an application scenario is a "nested" use of classical nonces and Epoch Markers: an Epoch Marker can be requested in order to be used as a nonce value for a specific data structure -- while a local generated nonce is used to retrieve that Epoch Marker via the "outer" ad-hoc interaction (e.g., nonce retrieval protocols that interact with an Epoch Bell to fetch an Epoch Marker to be used as a nonce).
+As some Epoch Marker types represent certain timestamp variants, these Epoch Markers or the secure conveyance method they are used in do not necessarily come with some hard-coded message imprint (as it is always the case with {{TSA}} TimeStampTokens.
+In essence, not all Epoch Marker types come with support for a binding between a message and an Epoch Marker (in contrast to the example in {{fig-ex-2}}.
+
+The following Epoch Marker types are defined in this document:
 
 ~~~~ cddl
 {::include cddl/epoch-marker.cddl}
@@ -199,7 +208,7 @@ This in fact means that it is possible to request an Epoch Marker via a challeng
 
 ## Epoch Marker Types {#epoch-payloads}
 
-This specification comes with a set of predefined Epoch Marker types.
+This section specifies the Epoch Marker types listed in {{fig-epoch-marker-cddl}}
 
 ### CBOR Time Tags
 
