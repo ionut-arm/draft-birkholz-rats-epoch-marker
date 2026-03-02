@@ -197,7 +197,7 @@ Taken as an opaque value, it is possible to use Epoch Markers as values for a no
 Similarities in the usage of nonces and Epoch Markers can sometimes lead to applications where both are used in the same interaction, albeit in different places and for different purposes.
 One example of such an application scenario is the "nested" use of classical nonces and Epoch Markers, whereby an Epoch Marker is requested to be used as a nonce value for a specific data structure, while a locally generated nonce is used to retrieve that Epoch Marker via an "outer" ad hoc interaction (e.g., nonce retrieval protocols that interact with an Epoch Bell to fetch an Epoch Marker to be used as a nonce).
 As some Epoch Marker types represent certain timestamp variants, these Epoch Markers or the secure conveyance method they are used in do not necessarily have a hard-coded message imprint, as is always the case with {{-TSA}} TimeStampTokens.
-Essentially, not all Epoch Marker types support a binding between a message and an Epoch Marker (unlike the example in {{fig-ex-2}}.
+This means that not all Epoch Marker types support binding a message to an Epoch Marker (unlike the example in {{fig-ex-2}}.
 
 The following Epoch Marker types are defined in this document:
 
